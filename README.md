@@ -14,6 +14,17 @@ To run the Atmos Docker image, execute the following command:
 make all
 ```
 
+## Bootstrap the tfstate
+
+1. atmos --auto-generate-backend-file=false terraform init tfstate-backend -s plat-ue2-dev
+2. atmos --auto-generate-backend-file=false terraform apply tfstate-backend -s plat-ue2-dev
+3. update tfstate-backend bucket and dynamodb settings
+4. atmos terraform generate backend -s plat-ue2-dev tfstate-backend
+5. atmos terraform workspace tfstate-backend --stack plat-ue2-dev
+6. before the above stacks
+    1. add tfstate-backend to components
+    2. add default config tfstate-backend
+
 ## Noticeable Atmos commands
 
 <details>
