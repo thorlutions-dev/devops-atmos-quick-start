@@ -1,0 +1,14 @@
+import:
+  - orgs/acme/plat/dev/_defaults
+  - mixins/region/us-east-2
+  # Override the `vpc` component configuration for `dev` by importing the `catalog/vpc/dev` manifest
+  - catalog/tfstate-backend/defaults
+  - catalog/vpc/dev
+
+components:
+  terraform:
+    vpc:
+      vars:
+        availability_zones:
+          - us-east-2a
+          - us-east-2b
